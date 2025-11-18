@@ -1,8 +1,8 @@
-🐾 Animal Battle
+# 🐾 Animal Battle
 
 Ett enkelt men unikt kortspel för Android utvecklat i Kotlin. Spelet är turbaserat och bygger på snabba dueller mellan spelaren och en AI, där varje runda avgörs av vilket djurkort man drar och vilken handling man väljer.
 
-🎯 Spelidé
+### 🎯 Spelidé
 
 Spelaren och AI:n får varsitt djurkort. Varje kort har tre egenskaper:
 
@@ -17,7 +17,7 @@ Spelaren väljer sedan en av två handlingar:
 
 Rundan avgörs genom enkel jämförelse av styrka och valda handlingar. Först till ett visst antal poäng vinner matchen.
 
-🤖 AI – Personality System
+### 🤖 AI – Personality System
 
 I stället för att AI:n alltid gör det optimala valet använder spelet ett enkelt personlighetssystem.
 Det gör AI:n mer varierad och spelet mer levande.
@@ -37,7 +37,7 @@ RANDOM
 AI:n väljer handling baserat på djurets personlighet och inte bara styrkan.
 Det gör spelet både balanserat och roligt, utan att AI:n känns “perfekt”.
 
-🐗 Exempel på djurkort (koncept)
+### 🐗 Exempel på djurkort (koncept)
 
 Här är exempel på hur djuren i spelet kan vara utformade:
 
@@ -55,7 +55,7 @@ Tvättbjörn
 
 Djurens bilder (om de används) läggs i res/drawable/.
 
-📱 UI – Skiss / Struktur
+### 📱 UI – Skiss / Struktur
 
 Startskärm
 – Knapp: “Start Game”
@@ -71,3 +71,27 @@ Spelskärm
 Game Over
 – Vinnare visas
 – Knapp: “Play Again”
+
+### 📱 UI Design Preview
+
+Här är UI-skisserna för spelet **Animal Battle**, genererade som tidiga mockups för att illustrera spelets olika skärmar.
+
+---
+
+#### 🏁 Start Screen
+![Start Screen](docs/start_screen.png)
+
+---
+
+#### ⚔️ Gameplay Screen
+![Gameplay Screen](docs/gameplay_screen.png)
+
+---
+
+#### 🎯 Round Result Screen
+![Round Result](docs/round_result.png)
+
+---
+
+#### 💀 Game Over Screen
+![Game Over](docs/game_over.png)
