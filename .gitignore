@@ -1,13 +1,14 @@
-# ==============================
-# Android / Kotlin .gitignore
-# ==============================
+# ============================================
+# Android / Kotlin / JetBrains .gitignore
+# ============================================
 
-# Gradle files
+# Gradle
 .gradle/
 **/build/
 build/
+.gradle-cache/
 
-# Local configs
+# Local config
 local.properties
 *.local
 
@@ -17,32 +18,33 @@ local.properties
 *.iws
 *.ipr
 
-# MacOS
-.DS_Store
+# Kotlin compiler cache
+.kotlin/
 
-# Native / external builds
+# Native builds
 .cxx/
 .externalNativeBuild/
 
-# Captures
+# Generated captures
 captures/
 
-# Generated files
-navigation.json
-*.class
-*.dex
+# macOS system files
+.DS_Store
 
-# Binary outputs
+# Binaries
 *.apk
 *.aab
 *.ap_
+*.dex
+*.class
+*.so
 
-# Signing keys (never commit)
+# Signing keys (do NOT commit these)
 *.keystore
 *.jks
 
 # Logs
 *.log
 
-# Other
-.cache/
+# Navigation + other generated
+navigation.json
