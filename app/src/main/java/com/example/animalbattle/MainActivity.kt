@@ -1,4 +1,3 @@
-// com/example/animalbattle/MainActivity.kt
 package com.example.animalbattle
 
 import android.content.Intent
@@ -16,9 +15,13 @@ class MainActivity : AppCompatActivity() {
         val startButton = findViewById<Button>(R.id.button_start_game)
 
         startButton.setOnClickListener {
+            // Nollställ poängen inför varje ny match
             ScoreManager.reset()
+
+            // Starta själva spelet
             val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
         }
     }
 }
+
