@@ -41,6 +41,19 @@ class GameActivity : AppCompatActivity() {
         defendButton = findViewById(R.id.button_defend)
 
         startNewRound()
+
+        private fun playRound(playerAction: String) {
+            // Här lägger vi rundlogiken i nästa steg
+        }
+
+        attackButton.setOnClickListener {
+            playRound("ATTACK")
+        }
+
+        defendButton.setOnClickListener {
+            playRound("DEFEND")
+        }
+
     }
 
     private fun startNewRound() {
