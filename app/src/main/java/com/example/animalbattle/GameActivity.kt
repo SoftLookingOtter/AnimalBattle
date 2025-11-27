@@ -1,5 +1,6 @@
 package com.example.animalbattle
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -102,15 +103,25 @@ class GameActivity : AppCompatActivity() {
         // 4. Uppdatera score-raden
         scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
 
-        // 5. Beskrivning – sparas för att kunna skickas vidare sen
+        // 5. Beskrivning – text om vad du gjorde
         val description = if (playerAction == "ATTACK") {
             "You attacked the ${aiCard.name.lowercase()}!"
         } else {
             "You defended against the ${aiCard.name.lowercase()}!"
         }
 
-        // I nästa steg kommer vi använda resultMessage + description
-        // för att öppna RoundResultActivity och visa rundans resultat.
+        // 6. Starta RoundResultActivity och skicka med allt
+        val intent = Intent(this, RoundResultActivity::class.java).apply {
+            putExtra("playerName", playerCard.name)
+            putExtra("playerImage", playerCard.imageRes)
+            putExtra("aiName", aiCard.name)
+            putExtra("aiImage", aiCard.imageRes)
+            putExtra("description", description)
+            putExtra("resultMessage", resultMessage)
+        }
+
+        startActivity(intent)
+        finish() // stäng den här rundan, nästa startas från RoundResultActivity
     }
 }
 
