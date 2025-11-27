@@ -1,4 +1,7 @@
 package com.example.animalbattle.data
 
-class Personality {
+enum class Personality {
+    AGGRESSIVE,
+    DEFENSIVE,
+    RANDOM
 }

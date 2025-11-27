@@ -1,4 +1,8 @@
 package com.example.animalbattle.data
 
-class AnimalCard {
-}
+data class AnimalCard(
+    val name: String,
+    val strength: Int,
+    val personality: Personality,
+    val imageRes: Int
+)
