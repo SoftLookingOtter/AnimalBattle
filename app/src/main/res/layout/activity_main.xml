@@ -6,28 +6,49 @@
     android:layout_height="match_parent"
     android:padding="24dp">
 
-    <TextView
-        android:id="@+id/text_title"
-        android:layout_width="wrap_content"
+    <!-- Allt innehåll centrerat i mitten -->
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Animal Battle"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/button_start_game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_start_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Game"
-        app:layout_constraintTop_toBottomOf="@id/text_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Titel -->
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animal Battle"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Grupp-bild | nu STOR -->
+        <ImageView
+            android:id="@+id/iv_animals_group"
+            android:layout_width="420dp"
+            android:layout_height="420dp"
+            android:layout_marginBottom="40dp"
+            android:src="@drawable/animals_group"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null" />
+
+        <!-- Start-knapp -->
+        <Button
+            android:id="@+id/button_start_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Game"
+            android:paddingHorizontal="32dp"
+            android:paddingVertical="16dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
