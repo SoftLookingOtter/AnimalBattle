@@ -14,54 +14,49 @@ class RoundResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_round_result)
 
-        // Hämta UI-element
         val ivPlayer = findViewById<ImageView>(R.id.iv_player_result)
         val ivAi = findViewById<ImageView>(R.id.iv_ai_result)
         val tvPlayerLabel = findViewById<TextView>(R.id.tv_player_card_label)
         val tvAiLabel = findViewById<TextView>(R.id.tv_ai_card_label)
-        val tvDescription = findViewById<TextView>(R.id.tv_round_description)
+        val tvPlayerStrength = findViewById<TextView>(R.id.tv_player_strength_result)
+        val tvAiStrength = findViewById<TextView>(R.id.tv_ai_strength_result)
         val tvResult = findViewById<TextView>(R.id.tv_round_result)
         val tvPlayerScore = findViewById<TextView>(R.id.tv_player_score_result)
         val tvAiScore = findViewById<TextView>(R.id.tv_ai_score_result)
         val nextButton = findViewById<Button>(R.id.button_next_round)
 
-        // Plocka ut data som skickades från GameActivity
         val playerName = intent.getStringExtra("playerName") ?: "Player"
         val aiName = intent.getStringExtra("aiName") ?: "AI"
         val playerImageRes = intent.getIntExtra("playerImage", 0)
         val aiImageRes = intent.getIntExtra("aiImage", 0)
-        val description = intent.getStringExtra("description") ?: ""
         val resultMessage = intent.getStringExtra("resultMessage") ?: ""
+        val playerStrength = intent.getIntExtra("playerStrength", 0)
+        val aiStrength = intent.getIntExtra("aiStrength", 0)
 
-        // Sätt bilder om de finns
         if (playerImageRes != 0) ivPlayer.setImageResource(playerImageRes)
         if (aiImageRes != 0) ivAi.setImageResource(aiImageRes)
 
-        // Sätt texter
         tvPlayerLabel.text = "Your Card: $playerName"
         tvAiLabel.text = "AI Card: $aiName"
-        tvDescription.text = description
+        tvPlayerStrength.text = "Strength: $playerStrength"
+        tvAiStrength.text = "Strength: $aiStrength"
+
+        // Bara huvudresultatet visas
         tvResult.text = resultMessage
 
-        // Poäng från ScoreManager
         tvPlayerScore.text = "Your Score: ${ScoreManager.playerScore}"
         tvAiScore.text = "AI Score: ${ScoreManager.aiScore}"
 
-        // Knappen för nästa steg
         nextButton.setOnClickListener {
-            // Har någon nått vinstgränsen?
             if (ScoreManager.playerScore >= ScoreManager.WIN_SCORE ||
                 ScoreManager.aiScore >= ScoreManager.WIN_SCORE
             ) {
-                // Gå till GameOverActivity
-                val gameOverIntent = Intent(this, GameOverActivity::class.java)
-                startActivity(gameOverIntent)
+                startActivity(Intent(this, GameOverActivity::class.java))
             } else {
-                // Ny runda → tillbaka till GameActivity
-                val gameIntent = Intent(this, GameActivity::class.java)
-                startActivity(gameIntent)
+                startActivity(Intent(this, GameActivity::class.java))
             }
             finish()
         }
     }
 }
+

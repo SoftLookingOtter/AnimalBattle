@@ -13,38 +13,28 @@ class GameOverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_over)
 
-        // UI-referenser
         val tvTitle = findViewById<TextView>(R.id.tv_game_over_title)
-        val tvWinner = findViewById<TextView>(R.id.tv_winner)
-        val tvFinalScore = findViewById<TextView>(R.id.tv_final_score)
-        val buttonPlayAgain = findViewById<Button>(R.id.button_play_again)
-        val buttonMenu = findViewById<Button>(R.id.button_return_menu)
+        val tvScore = findViewById<TextView>(R.id.tv_final_score)
+        val playAgainButton = findViewById<Button>(R.id.button_play_again)
+        val backToMenuButton = findViewById<Button>(R.id.button_back_to_menu)
 
-        // Hämta aktuella poäng
-        val playerScore = ScoreManager.playerScore
-        val aiScore = ScoreManager.aiScore
-
-        // Har spelaren vunnit?
-        val playerWon = playerScore > aiScore
-
-        tvTitle.text = if (playerWon) "You Won!" else "Game Over"
-        tvWinner.text = if (playerWon) "Winner: Player" else "Winner: AI"
-        tvFinalScore.text = "Final Score: Player $playerScore vs AI $aiScore"
-
-        // 🔁 Spela igen → ny match direkt
-        buttonPlayAgain.setOnClickListener {
-            ScoreManager.reset()
-            val intent = Intent(this, GameActivity::class.java)
-            startActivity(intent)
-            finish()
+        tvTitle.text = if (ScoreManager.playerScore >= ScoreManager.WIN_SCORE) {
+            "You Win! 🎉"
+        } else {
+            "Game Over 😭"
         }
 
-        // 🏠 Tillbaka till menyn
-        buttonMenu.setOnClickListener {
+        tvScore.text = "Final Score: Player ${ScoreManager.playerScore} – AI ${ScoreManager.aiScore}"
+
+        playAgainButton.setOnClickListener {
             ScoreManager.reset()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finishAffinity() // stänger ev. gamla activities
+            startActivity(Intent(this, GameActivity::class.java))
+        }
+
+        backToMenuButton.setOnClickListener {
+            ScoreManager.reset()
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }
+

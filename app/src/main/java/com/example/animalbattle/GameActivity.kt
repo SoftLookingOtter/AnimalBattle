@@ -14,12 +14,10 @@ import com.example.animalbattle.util.ScoreManager
 
 class GameActivity : AppCompatActivity() {
 
-    // Kortlek och aktuella kort
     private val deck = Deck()
     private lateinit var playerCard: AnimalCard
     private lateinit var aiCard: AnimalCard
 
-    // UI-element
     private lateinit var playerImage: ImageView
     private lateinit var playerName: TextView
     private lateinit var playerStrength: TextView
@@ -32,7 +30,6 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        // Koppla UI
         playerImage = findViewById(R.id.iv_player_image)
         playerName = findViewById(R.id.tv_player_name)
         playerStrength = findViewById(R.id.tv_player_strength)
@@ -41,27 +38,16 @@ class GameActivity : AppCompatActivity() {
         attackButton = findViewById(R.id.button_attack)
         defendButton = findViewById(R.id.button_defend)
 
-        // Starta första rundan
         startNewRound()
 
-        // Knappar
-        attackButton.setOnClickListener {
-            playRound("ATTACK")
-        }
-
-        defendButton.setOnClickListener {
-            playRound("DEFEND")
-        }
+        attackButton.setOnClickListener { playRound("ATTACK") }
+        defendButton.setOnClickListener { playRound("DEFEND") }
     }
 
-    // ---------- Här börjar "egna" funktioner (UTANFÖR onCreate) ----------
-
     private fun startNewRound() {
-        // Dra kort
         playerCard = deck.drawRandomCard()
         aiCard = deck.drawRandomCard()
 
-        // Uppdatera spelarens kort i UI
         playerImage.setImageResource(playerCard.imageRes)
         playerName.text = playerCard.name
         playerStrength.text = "Strength: ${playerCard.strength}"
@@ -69,15 +55,12 @@ class GameActivity : AppCompatActivity() {
             playerCard.personality.name.lowercase().replaceFirstChar { it.uppercase() }
         }"
 
-        // Score-rad
         scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
     }
 
     private fun playRound(playerAction: String) {
-        // 1. AI väljer handling
         val aiAction = AiLogic.chooseAction(aiCard.personality)
 
-        // 2. Räkna ut resultat
         val diff = GameLogic.calculateRound(
             playerCard,
             aiCard,
@@ -85,43 +68,38 @@ class GameActivity : AppCompatActivity() {
             aiAction
         )
 
-        // 3. Uppdatera poäng + resultattext
         val resultMessage = when {
             diff > 0 -> {
                 ScoreManager.playerScore++
-                "You won the round!"
+                "You won the round! 🎉"
             }
             diff < 0 -> {
                 ScoreManager.aiScore++
-                "You lost the round!"
+                "You lost the round! 😭"
             }
             else -> {
-                "It's a tie!"
+                "It's a tie! 😅"
             }
         }
 
-        // 4. Uppdatera score-raden
-        scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
+        scoreText.text =
+            "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
 
-        // 5. Beskrivning – text om vad du gjorde
-        val description = if (playerAction == "ATTACK") {
-            "You attacked the ${aiCard.name.lowercase()}!"
-        } else {
-            "You defended against the ${aiCard.name.lowercase()}!"
-        }
+        // 🔥 Ingen description, inga “You defended/AI defended”
 
-        // 6. Starta RoundResultActivity och skicka med allt
         val intent = Intent(this, RoundResultActivity::class.java).apply {
             putExtra("playerName", playerCard.name)
             putExtra("playerImage", playerCard.imageRes)
             putExtra("aiName", aiCard.name)
             putExtra("aiImage", aiCard.imageRes)
-            putExtra("description", description)
             putExtra("resultMessage", resultMessage)
+            putExtra("playerStrength", playerCard.strength)
+            putExtra("aiStrength", aiCard.strength)
         }
 
         startActivity(intent)
-        finish() // stäng den här rundan, nästa startas från RoundResultActivity
+        finish()
     }
 }
+
 
