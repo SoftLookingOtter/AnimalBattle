@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Button primary color (change whenever you want) -->
+    <color name="ab_button_primary">#6A4DF5</color>
 </resources>

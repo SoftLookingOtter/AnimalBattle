@@ -1,7 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.AnimalBattle" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:textViewStyle">@style/Widget.AnimalBattle.TextView</item>
     </style>
+
+    <style name="Theme.AnimalBattle" parent="Base.Theme.AnimalBattle" />
+
+    <!-- Samma styles som i values/ så night-mode beter sig likadant -->
+
+    <style name="Widget.AnimalBattle.TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Text.AnimalBattle.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.AnimalBattle.CardTitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.AnimalBattle.Body" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Button.AnimalBattle.Primary" parent="Widget.Material3.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="backgroundTint">@color/ab_button_primary</item>
+    </style>
+
 </resources>

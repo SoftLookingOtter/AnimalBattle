@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@drawable/background_paper">
 
     <!-- Everything sits inside this centered column so it lines up with the game screen. -->
     <LinearLayout
@@ -22,11 +23,10 @@
         <!-- Title for this screen. -->
         <TextView
             android:id="@+id/tv_round_title"
+            style="@style/Text.AnimalBattle.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Round Result"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:layout_marginBottom="12dp" />
 
         <!-- Player card (same size and layout as the card on the battle screen). -->
@@ -44,7 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/player_bg_fantasy" />
+                android:src="@drawable/player_bg_fantasy"
+                android:alpha="1.0" />
 
             <!-- Card contents. -->
             <LinearLayout
@@ -57,32 +58,42 @@
                     android:id="@+id/iv_player_result"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/tv_player_name_result"
+                    style="@style/Text.AnimalBattle.CardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Your Card: Tiger"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="2dp"
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="4" />
 
                 <TextView
                     android:id="@+id/tv_player_action_result"
+                    style="@style/Text.AnimalBattle.Body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ATTACK ⚔️"
-                    android:textColor="@android:color/white" />
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="4" />
 
                 <TextView
                     android:id="@+id/tv_player_strength_result"
+                    style="@style/Text.AnimalBattle.Body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Strength: 80"
-                    android:textColor="@android:color/white" />
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="4" />
             </LinearLayout>
 
         </FrameLayout>
@@ -90,11 +101,10 @@
         <!-- VS label between the two cards. -->
         <TextView
             android:id="@+id/tv_vs_result"
+            style="@style/Text.AnimalBattle.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="VS"
-            android:textSize="22sp"
-            android:textStyle="bold"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
@@ -113,7 +123,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/player_bg_fantasy" />
+                android:src="@drawable/player_bg_fantasy"
+                android:alpha="1.0" />
 
             <!-- AI card contents. -->
             <LinearLayout
@@ -126,32 +137,42 @@
                     android:id="@+id/iv_ai_result"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/tv_ai_name_result"
+                    style="@style/Text.AnimalBattle.CardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AI Card: Goat"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="2dp"
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="4" />
 
                 <TextView
                     android:id="@+id/tv_ai_action_result"
+                    style="@style/Text.AnimalBattle.Body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DEFEND 🛡️"
-                    android:textColor="@android:color/white" />
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="4" />
 
                 <TextView
                     android:id="@+id/tv_ai_strength_result"
+                    style="@style/Text.AnimalBattle.Body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Strength: 70"
-                    android:textColor="@android:color/white" />
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="4" />
             </LinearLayout>
 
         </FrameLayout>
@@ -159,21 +180,20 @@
         <!-- Result message for this round. -->
         <TextView
             android:id="@+id/tv_round_result"
+            style="@style/Text.AnimalBattle.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="You won the round! 🎉"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="4dp" />
 
         <!-- Combined match score (same style as the game screen). -->
         <TextView
             android:id="@+id/tv_score_result"
+            style="@style/Text.AnimalBattle.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Score: Player 0 vs AI 0"
-            android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
         <!-- Button to move on to the next round. -->

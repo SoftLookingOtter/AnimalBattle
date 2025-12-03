@@ -1,12 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- This is the base theme I use for the whole app. -->
+    <!-- Base theme for the app -->
     <style name="Base.Theme.AnimalBattle" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- I can override colors here later if I want a custom look. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Alla vanliga TextViews får vit text som default -->
+        <item name="android:textViewStyle">@style/Widget.AnimalBattle.TextView</item>
     </style>
 
-    <!-- My main theme just extends the base one for now. -->
+    <!-- Appens huvudtema -->
     <style name="Theme.AnimalBattle" parent="Base.Theme.AnimalBattle" />
+
+    <!-- ====== GLOBAL TEXTVIEW ====== -->
+    <style name="Widget.AnimalBattle.TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- ====== TEXT STYLES ====== -->
+
+    <!-- Stora rubriker: Battle Arena, Round Result, Game Over -->
+    <style name="Text.AnimalBattle.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Korttitlar: "Your Card: Tiger", "AI Card: Goat", "AI Card" placeholder -->
+    <style name="Text.AnimalBattle.CardTitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Vanlig text: strength, actions, score, underrubriker -->
+    <style name="Text.AnimalBattle.Body" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- ====== PRIMARY BUTTON STYLE ====== -->
+
+    <style name="Button.AnimalBattle.Primary" parent="Widget.Material3.Button">
+        <!-- Text -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+
+        <!-- Padding -->
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+
+        <!-- Bakgrundsfärg (enkelt att byta) -->
+        <item name="backgroundTint">@color/ab_button_primary</item>
+    </style>
 
 </resources>
