@@ -31,11 +31,11 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        // Start battle music and keep it playing across game/result screens
-        // (MusicManager knows internally which track to use.)
+        // I start the battle music as soon as this screen loads,
+        // and I let it keep playing when I move to the round result screen.
         MusicManager.playBattleMusic(this)
 
-        // View references
+        // Just grabbing all the views I need here.
         playerImage = findViewById(R.id.iv_player_image)
         playerName = findViewById(R.id.tv_player_name)
         playerStrength = findViewById(R.id.tv_player_strength)
@@ -46,16 +46,17 @@ class GameActivity : AppCompatActivity() {
 
         startNewRound()
 
+        // When the player taps a button, I run one round with that action.
         attackButton.setOnClickListener { playRound("ATTACK") }
         defendButton.setOnClickListener { playRound("DEFEND") }
     }
 
     private fun startNewRound() {
-        // Draw cards for player and AI
+        // I draw new cards for both the player and the AI at the start of every round.
         playerCard = deck.drawRandomCard()
         aiCard = deck.drawRandomCard()
 
-        // Update player card UI
+        // Then I update the UI so the player sees their new card.
         playerImage.setImageResource(playerCard.imageRes)
         playerName.text = playerCard.name
         playerStrength.text = "Strength: ${playerCard.strength}"
@@ -63,15 +64,15 @@ class GameActivity : AppCompatActivity() {
             playerCard.personality.name.lowercase().replaceFirstChar { it.uppercase() }
         }"
 
-        // Update score UI
+        // And I refresh the score display so it's always up to date.
         scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
     }
 
     private fun playRound(playerAction: String) {
-        // Let AI choose its action
+        // The AI picks its move based on the personality of its card.
         val aiAction = AiLogic.chooseAction(aiCard.personality)
 
-        // Calculate round result
+        // This gives me the numerical result of the round.
         val diff = GameLogic.calculateRound(
             playerCard,
             aiCard,
@@ -79,6 +80,7 @@ class GameActivity : AppCompatActivity() {
             aiAction
         )
 
+        // I update the scores depending on how the round ended.
         val resultMessage = when {
             diff > 0 -> {
                 ScoreManager.playerScore++
@@ -93,17 +95,17 @@ class GameActivity : AppCompatActivity() {
             }
         }
 
-        // Update score text on this screen
+        // I update the running score before leaving this screen.
         scoreText.text =
             "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
 
-        // Pretty action text with emojis for result screen
+        // These strings are just for the round result UI (to make it look nicer).
         val playerActionPretty =
             if (playerAction == "ATTACK") "ATTACK ⚔️" else "DEFEND 🛡️"
         val aiActionPretty =
             if (aiAction == "ATTACK") "ATTACK ⚔️" else "DEFEND 🛡️"
 
-        // Send round data to RoundResultActivity
+        // I pass everything to the round result screen so it can show what happened.
         val intent = Intent(this, RoundResultActivity::class.java).apply {
             putExtra("playerName", playerCard.name)
             putExtra("playerImage", playerCard.imageRes)
@@ -116,7 +118,7 @@ class GameActivity : AppCompatActivity() {
             putExtra("aiAction", aiActionPretty)
         }
 
-        // Keep music playing – no fadeOut/stop here
+        // I keep the music running here; the transition to result is instant anyway.
         startActivity(intent)
         finish()
     }

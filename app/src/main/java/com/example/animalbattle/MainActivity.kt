@@ -19,15 +19,15 @@ class MainActivity : AppCompatActivity() {
         val titleText = findViewById<TextView>(R.id.text_title)
         val animalsImage = findViewById<ImageView>(R.id.iv_animals_group)
 
-        // Start new game from main menu
+        // When the player taps the start button, I reset the scores and begin a new game.
         startButton.setOnClickListener {
-            // Reset scores before a fresh game
             ScoreManager.reset()
 
-            // Fade out menu music, then go to the battle screen
+            // I fade out the menu music first so the transition feels smoother.
             MusicManager.fadeOut {
                 startActivity(Intent(this, GameActivity::class.java))
-                // Optional: close main menu so back button doesn’t return here
+                // If I ever want to prevent users from returning to this screen with the back button,
+                // I can uncomment finish() here.
                 // finish()
             }
         }
@@ -35,15 +35,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Play menu music whenever we return to the main screen
+        // I restart the menu music whenever the player returns to this screen.
         MusicManager.playMenuMusic(this)
-        // eller MusicManager.startMenuMusic(this) om du vill använda aliaset
     }
 
     override fun onPause() {
         super.onPause()
-        // Stop music when leaving the main screen (e.g. app goes to background)
-        // Detta kommer oftast ske efter fadeOut ovan, men det är säkert att kalla stop() igen.
+        // I stop the menu music when leaving the screen.
+        // Most of the time fadeOut already took care of it, but calling stop() again is safe.
         MusicManager.stop()
     }
 }

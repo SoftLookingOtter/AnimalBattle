@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
-    <!-- Main vertical container centered on screen -->
+    <!-- I centered everything inside this main column so the layout feels balanced. -->
     <LinearLayout
         android:id="@+id/content_container"
         android:layout_width="0dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Title (matches result screen title spacing) -->
+        <!-- Title at the top. Matches spacing used on the result screen. -->
         <TextView
             android:id="@+id/tv_game_title"
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:layout_marginBottom="12dp" />
 
-        <!-- Player card (same size, spacing, horizontal margins as result screen) -->
+        <!-- Player card container. Same size and margins as on the round result screen. -->
         <FrameLayout
             android:id="@+id/player_card_container"
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:background="@drawable/round_mask"
             android:clipToOutline="true">
 
-            <!-- Player card background -->
+            <!-- Background for the player's card. -->
             <ImageView
                 android:id="@+id/player_card_background_image"
                 android:layout_width="match_parent"
@@ -47,14 +47,14 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/player_bg_fantasy" />
 
-            <!-- Player card content -->
+            <!-- Everything inside the player card is centered vertically. -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center_horizontal">
 
-                <!-- Player image -->
+                <!-- Player's animal image. -->
                 <ImageView
                     android:id="@+id/iv_player_image"
                     android:layout_width="120dp"
@@ -63,7 +63,7 @@
                     android:adjustViewBounds="true"
                     android:layout_marginTop="8dp" />
 
-                <!-- Player name -->
+                <!-- Player card name. -->
                 <TextView
                     android:id="@+id/tv_player_name"
                     android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                     android:layout_marginTop="4dp"
                     android:textColor="@android:color/white" />
 
-                <!-- Player strength -->
+                <!-- Player card strength. -->
                 <TextView
                     android:id="@+id/tv_player_strength"
                     android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                     android:gravity="center"
                     android:textColor="@android:color/white" />
 
-                <!-- Player personality -->
+                <!-- Player card personality. -->
                 <TextView
                     android:id="@+id/tv_player_personality"
                     android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
 
         </FrameLayout>
 
-        <!-- VS section (same spacing as result screen) -->
+        <!-- VS label placed between the two cards. -->
         <TextView
             android:id="@+id/tv_vs"
             android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
-        <!-- AI card (same height, margins and layout structure as result screen) -->
+        <!-- AI card. Matches the player's card layout. -->
         <FrameLayout
             android:id="@+id/ai_card_container"
             android:layout_width="match_parent"
@@ -119,7 +119,7 @@
             android:background="@drawable/round_mask"
             android:clipToOutline="true">
 
-            <!-- AI background -->
+            <!-- Background for the AI card. -->
             <ImageView
                 android:id="@+id/ai_card_background_image"
                 android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/card_bg_fantasy" />
 
-            <!-- Placeholder text until AI card is revealed -->
+            <!-- Placeholder shown until the AI card is revealed. -->
             <TextView
                 android:id="@+id/tv_ai_placeholder"
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                 android:padding="16dp" />
         </FrameLayout>
 
-        <!-- Invisible space holder (keeps same vertical spacing as round result text on result screen) -->
+        <!-- Invisible spacer so the layout lines up with the result screen structure. -->
         <TextView
             android:id="@+id/tv_dummy_result_space"
             android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="4dp" />
 
-        <!-- Score (same margin-bottom as result screen score) -->
+        <!-- Score text that always shows the current match score. -->
         <TextView
             android:id="@+id/tv_score"
             android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp" />
 
-        <!-- Button row (matches horizontal margins & vertical position of result screen button) -->
+        <!-- Buttons for choosing actions. -->
         <LinearLayout
             android:id="@+id/button_row"
             android:layout_width="match_parent"
@@ -169,7 +169,7 @@
             android:gravity="center"
             android:layout_marginHorizontal="24dp">
 
-            <!-- Attack button -->
+            <!-- Attack button. -->
             <Button
                 android:id="@+id/button_attack"
                 android:layout_width="0dp"
@@ -180,12 +180,12 @@
                 android:paddingVertical="16dp"
                 android:textSize="18sp" />
 
-            <!-- Spacing between buttons -->
+            <!-- Spacer between the two buttons. -->
             <View
                 android:layout_width="16dp"
                 android:layout_height="0dp" />
 
-            <!-- Defend button -->
+            <!-- Defend button. -->
             <Button
                 android:id="@+id/button_defend"
                 android:layout_width="0dp"

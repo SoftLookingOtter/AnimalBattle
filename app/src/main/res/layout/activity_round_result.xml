@@ -7,6 +7,7 @@
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
+    <!-- Everything sits inside this centered column so it lines up with the game screen. -->
     <LinearLayout
         android:id="@+id/content_container_result"
         android:layout_width="0dp"
@@ -18,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Titel -->
+        <!-- Title for this screen. -->
         <TextView
             android:id="@+id/tv_round_title"
             android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="12dp" />
 
-        <!-- Player card -->
+        <!-- Player card (same size and layout as the card on the battle screen). -->
         <FrameLayout
             android:id="@+id/player_card_container_result"
             android:layout_width="match_parent"
@@ -37,6 +38,7 @@
             android:background="@drawable/round_mask"
             android:clipToOutline="true">
 
+            <!-- Background image for the player card. -->
             <ImageView
                 android:id="@+id/player_card_bg_result"
                 android:layout_width="match_parent"
@@ -44,6 +46,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/player_bg_fantasy" />
 
+            <!-- Card contents. -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -84,7 +87,7 @@
 
         </FrameLayout>
 
-        <!-- VS -->
+        <!-- VS label between the two cards. -->
         <TextView
             android:id="@+id/tv_vs_result"
             android:layout_width="wrap_content"
@@ -95,7 +98,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
-        <!-- AI card -->
+        <!-- AI card (mirrors the player card setup). -->
         <FrameLayout
             android:id="@+id/ai_card_container_result"
             android:layout_width="match_parent"
@@ -104,6 +107,7 @@
             android:background="@drawable/round_mask"
             android:clipToOutline="true">
 
+            <!-- Background image for the AI card. -->
             <ImageView
                 android:id="@+id/ai_card_bg_result"
                 android:layout_width="match_parent"
@@ -111,6 +115,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/player_bg_fantasy" />
 
+            <!-- AI card contents. -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -151,7 +156,7 @@
 
         </FrameLayout>
 
-        <!-- Result text -->
+        <!-- Result message for this round. -->
         <TextView
             android:id="@+id/tv_round_result"
             android:layout_width="wrap_content"
@@ -162,7 +167,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="4dp" />
 
-        <!-- Combined score (matchar game screen-stilen) -->
+        <!-- Combined match score (same style as the game screen). -->
         <TextView
             android:id="@+id/tv_score_result"
             android:layout_width="wrap_content"
@@ -171,7 +176,7 @@
             android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
-        <!-- EN knapp -->
+        <!-- Button to move on to the next round. -->
         <Button
             android:id="@+id/button_next_round"
             android:layout_width="match_parent"

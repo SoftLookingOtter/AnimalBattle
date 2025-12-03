@@ -14,25 +14,24 @@ class GameOverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_over)
 
-        // 🔊 Spela kort end-jingle när Game Over-skärmen visas
+        // I play a short ending jingle as soon as this screen shows up.
         MusicManager.playEndJingle(this)
 
-        // Views
         val tvResult = findViewById<TextView>(R.id.tv_game_over_result)
         val playAgainButton = findViewById<Button>(R.id.button_play_again)
         val backToMenuButton = findViewById<Button>(R.id.button_back_to_menu)
 
-        // Hämta om spelaren vann eller förlorade
+        // I check whether the player won or lost the whole game.
         val playerWon = intent.getBooleanExtra("PLAYER_WON", false)
 
-        // Pokal vid vinst, ledsen gubbe vid förlust
+        // Simple win/lose message with a small emoji to make it feel nicer.
         tvResult.text = if (playerWon) {
             "YOU WON! 🏆"
         } else {
             "YOU LOST! 😢"
         }
 
-        // 🔁 Spela igen: nollställ poäng och starta nytt game
+        // When the player wants to play again, I reset the score and start a new game.
         playAgainButton.setOnClickListener {
             ScoreManager.reset()
 
@@ -41,7 +40,7 @@ class GameOverActivity : AppCompatActivity() {
             finish()
         }
 
-        // 🏡 Till meny: nollställ poäng och stäng denna skärm
+        // Going back to the menu should also reset everything so the next run is fresh.
         backToMenuButton.setOnClickListener {
             ScoreManager.reset()
             finish()
@@ -50,7 +49,7 @@ class GameOverActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        // ⏹ Stoppa end-jingle om användaren lämnar denna skärm
+        // If the user leaves this screen, I stop the ending jingle immediately.
         MusicManager.stop()
     }
 }

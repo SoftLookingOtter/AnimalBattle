@@ -14,15 +14,16 @@ object GameLogic {
         val playerBase = playerCard.strength
         val aiBase = aiCard.strength
 
-        // Attack = högre offensiv bonus
-        // Defend = lägre men finns ändå så man inte får noll
-        val playerBonus = if (playerAction == "ATTACK") 20 else 10
-        val aiBonus = if (aiAction == "ATTACK") 20 else 10
+        // Here I only give a bonus to DEFEND.
+        // ATTACK uses the raw strength of the card,
+        // while DEFEND gets a small boost so it can sometimes save a weaker animal.
+        val playerBonus = if (playerAction == "DEFEND") 10 else 0
+        val aiBonus = if (aiAction == "DEFEND") 10 else 0
 
-        // Returnerar skillnaden
-        // > 0 = spelaren vann
-        // < 0 = AI vann
-        // 0 = oavgjort
+        // I return the difference between the final values.
+        // > 0 means the player won the round
+        // < 0 means the AI won
+        // 0 means it's a tie
         return (playerBase + playerBonus) - (aiBase + aiBonus)
     }
 }

@@ -15,7 +15,7 @@ class RoundResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_round_result)
 
-        // Views
+        // Grabbing all the views I need for this screen.
         val ivPlayer = findViewById<ImageView>(R.id.iv_player_result)
         val ivAi = findViewById<ImageView>(R.id.iv_ai_result)
         val tvPlayerName = findViewById<TextView>(R.id.tv_player_name_result)
@@ -28,7 +28,7 @@ class RoundResultActivity : AppCompatActivity() {
         val scoreText = findViewById<TextView>(R.id.tv_score_result)
         val nextButton = findViewById<Button>(R.id.button_next_round)
 
-        // Data from intent
+        // I read all the data I passed from GameActivity so I can show what happened this round.
         val playerName = intent.getStringExtra("playerName") ?: "Player"
         val aiName = intent.getStringExtra("aiName") ?: "AI"
         val playerImageRes = intent.getIntExtra("playerImage", 0)
@@ -39,11 +39,11 @@ class RoundResultActivity : AppCompatActivity() {
         val playerAction = intent.getStringExtra("playerAction") ?: ""
         val aiAction = intent.getStringExtra("aiAction") ?: ""
 
-        // Set images on the result cards
+        // Showing the images of the cards used this round.
         if (playerImageRes != 0) ivPlayer.setImageResource(playerImageRes)
         if (aiImageRes != 0) ivAi.setImageResource(aiImageRes)
 
-        // Set text content
+        // Filling in all the text fields so the player can review the round.
         tvPlayerName.text = "Your Card: $playerName"
         tvAiName.text = "AI Card: $aiName"
 
@@ -53,35 +53,34 @@ class RoundResultActivity : AppCompatActivity() {
         tvPlayerStrength.text = "Strength: $playerStrength"
         tvAiStrength.text = "Strength: $aiStrength"
 
-        // Round result message
         tvResult.text = resultMessage
 
-        // Total score from ScoreManager
+        // I also show the overall match score here.
         scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
 
         nextButton.setOnClickListener {
-            // Check if someone has won the entire game
+            // I check here whether the match is finished or not.
             if (ScoreManager.playerScore >= ScoreManager.WIN_SCORE ||
                 ScoreManager.aiScore >= ScoreManager.WIN_SCORE
             ) {
                 val playerWonGame = ScoreManager.playerScore >= ScoreManager.WIN_SCORE
 
                 val intent = Intent(this, GameOverActivity::class.java).apply {
-                    // 👇 MATCHAR GameOverActivity
+                    // I only pass the win/loss boolean and let GameOverActivity decide the message.
                     putExtra("PLAYER_WON", playerWonGame)
                 }
 
-                // Fadea ut battle-musiken innan vi går till Game Over
+                // I fade out the battle music before switching to the game-over screen.
                 MusicManager.fadeOut {
                     startActivity(intent)
                     finish()
                 }
             } else {
-                // Ingen har nått WIN_SCORE – fortsätt spelet
+                // If nobody has won yet, I simply go back to the main battle screen.
                 val backToGame = Intent(this, GameActivity::class.java)
                 startActivity(backToGame)
                 finish()
-                // Ingen fadeOut här, battle_music fortsätter.
+                // I keep the battle music running here.
             }
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Simple vertical gradient I use for backgrounds. -->
     <gradient
         android:startColor="#FFF9E0"
         android:centerColor="#FFE082"

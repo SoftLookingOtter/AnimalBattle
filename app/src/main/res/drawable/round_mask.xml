@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This is my transparent rounded mask.
+     I use it to clip card backgrounds so everything keeps the same shape. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
     <corners android:radius="20dp" />
 
-    <!-- Transparent i stället för vit -->
+    <!-- Transparent so the actual image behind it shows through. -->
     <solid android:color="@android:color/transparent" />
 
 </shape>
+
 

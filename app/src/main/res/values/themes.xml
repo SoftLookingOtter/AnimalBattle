@@ -1,9 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- This is the base theme I use for the whole app. -->
     <style name="Base.Theme.AnimalBattle" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+        <!-- I can override colors here later if I want a custom look. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <!-- My main theme just extends the base one for now. -->
     <style name="Theme.AnimalBattle" parent="Base.Theme.AnimalBattle" />
+
 </resources>

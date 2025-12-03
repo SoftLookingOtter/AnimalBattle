@@ -1,12 +1,13 @@
 <!-- res/layout/activity_main.xml -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp">
 
-    <!-- Allt innehåll centrerat i mitten -->
+    <!-- I center everything here so the menu feels simple and clean. -->
     <LinearLayout
         android:id="@+id/content_container"
         android:layout_width="0dp"
@@ -18,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Titel -->
+        <!-- Game title at the top. -->
         <TextView
             android:id="@+id/text_title"
             android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="20dp" />
 
-        <!-- Grupp-bild | nu STOR -->
+        <!-- The big animal group image in the center of the menu. -->
         <ImageView
             android:id="@+id/iv_animals_group"
             android:layout_width="420dp"
@@ -39,7 +40,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@null" />
 
-        <!-- Start-knapp -->
+        <!-- Button that starts a new game. -->
         <Button
             android:id="@+id/button_start_game"
             android:layout_width="wrap_content"

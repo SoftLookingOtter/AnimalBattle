@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimalBattle">
 
-        <!-- START SKÄRM -->
+        <!-- This is the first screen the app shows when it launches. -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <!-- ANDRA SKÄRMAR -->
+        <!-- The rest of the screens I navigate to during the game. -->
         <activity android:name=".GameActivity" />
         <activity android:name=".RoundResultActivity" />
         <activity android:name=".GameOverActivity" />
