@@ -24,7 +24,7 @@
             android:id="@+id/tv_game_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Animal Battle"
+            android:text="Battle Arena"
             android:textSize="26sp"
             android:textStyle="bold"
             android:gravity="center"
