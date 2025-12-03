@@ -5,7 +5,8 @@
     android:id="@+id/game_over_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="#191919">
 
     <!-- Panel i mitten som ser ut som ett kort -->
     <LinearLayout
@@ -23,25 +24,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Stora resultat-raden: text sätts i Kotlin -->
         <TextView
             android:id="@+id/tv_game_over_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="YOU WON! 🏆"
-            android:textStyle="bold"
-            android:textSize="32sp"
-            android:gravity="center"
-            android:textColor="#3A2B1A"
-            android:layout_marginBottom="12dp"
-            android:maxLines="1"
-            android:includeFontPadding="false" />
+            android:text=""
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:textColor="#3A2B1A"
+        android:layout_marginBottom="12dp"
+        android:maxLines="1"
+        android:includeFontPadding="false" />
 
-
-
-
-
-
-        <!-- Liten rad med emojis under, statisk men passar både win/lose -->
+        <!-- Liten rad med emojis under -->
         <TextView
             android:id="@+id/tv_game_over_sub"
             android:layout_width="wrap_content"

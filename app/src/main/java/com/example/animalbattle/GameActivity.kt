@@ -31,9 +31,11 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        // 🎵 Battle music
-        MusicManager.startBattleMusic(this)
+        // Start battle music and keep it playing across game/result screens
+        // (MusicManager knows internally which track to use.)
+        MusicManager.playBattleMusic(this)
 
+        // View references
         playerImage = findViewById(R.id.iv_player_image)
         playerName = findViewById(R.id.tv_player_name)
         playerStrength = findViewById(R.id.tv_player_strength)
@@ -49,34 +51,27 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun startNewRound() {
+        // Draw cards for player and AI
         playerCard = deck.drawRandomCard()
         aiCard = deck.drawRandomCard()
 
+        // Update player card UI
         playerImage.setImageResource(playerCard.imageRes)
         playerName.text = playerCard.name
         playerStrength.text = "Strength: ${playerCard.strength}"
+        playerPersonality.text = "Personality: ${
+            playerCard.personality.name.lowercase().replaceFirstChar { it.uppercase() }
+        }"
 
-        val personalityPretty = playerCard.personality.name
-            .lowercase()
-            .replaceFirstChar { it.uppercase() }
-
-        playerPersonality.text = "Personality: $personalityPretty"
-
+        // Update score UI
         scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
     }
 
     private fun playRound(playerAction: String) {
-        // AI väljer sin action
+        // Let AI choose its action
         val aiAction = AiLogic.chooseAction(aiCard.personality)
 
-        // Fina texter med emojis till RoundResultActivity
-        val playerActionPretty =
-            if (playerAction == "ATTACK") "ATTACK ⚔️" else "DEFEND 🛡️"
-
-        val aiActionPretty =
-            if (aiAction == "ATTACK") "ATTACK ⚔️" else "DEFEND 🛡️"
-
-        // Räkna ut rundan
+        // Calculate round result
         val diff = GameLogic.calculateRound(
             playerCard,
             aiCard,
@@ -93,13 +88,22 @@ class GameActivity : AppCompatActivity() {
                 ScoreManager.aiScore++
                 "You lost the round! 😭"
             }
-            else -> "It's a tie! 😅"
+            else -> {
+                "It's a tie! 😅"
+            }
         }
 
-        // Uppdatera score-texten i battleskärmen
-        scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
+        // Update score text on this screen
+        scoreText.text =
+            "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
 
-        // Skicka ALL info till RoundResultActivity
+        // Pretty action text with emojis for result screen
+        val playerActionPretty =
+            if (playerAction == "ATTACK") "ATTACK ⚔️" else "DEFEND 🛡️"
+        val aiActionPretty =
+            if (aiAction == "ATTACK") "ATTACK ⚔️" else "DEFEND 🛡️"
+
+        // Send round data to RoundResultActivity
         val intent = Intent(this, RoundResultActivity::class.java).apply {
             putExtra("playerName", playerCard.name)
             putExtra("playerImage", playerCard.imageRes)
@@ -108,23 +112,12 @@ class GameActivity : AppCompatActivity() {
             putExtra("resultMessage", resultMessage)
             putExtra("playerStrength", playerCard.strength)
             putExtra("aiStrength", aiCard.strength)
-
-            // 👇 NYTT: vad som hände den här rundan
             putExtra("playerAction", playerActionPretty)
             putExtra("aiAction", aiActionPretty)
         }
 
+        // Keep music playing – no fadeOut/stop here
         startActivity(intent)
         finish()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        MusicManager.stop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        MusicManager.release()
     }
 }

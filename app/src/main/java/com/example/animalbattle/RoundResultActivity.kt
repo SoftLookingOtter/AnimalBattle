@@ -28,7 +28,7 @@ class RoundResultActivity : AppCompatActivity() {
         val scoreText = findViewById<TextView>(R.id.tv_score_result)
         val nextButton = findViewById<Button>(R.id.button_next_round)
 
-        // Data från intent
+        // Data from intent
         val playerName = intent.getStringExtra("playerName") ?: "Player"
         val aiName = intent.getStringExtra("aiName") ?: "AI"
         val playerImageRes = intent.getIntExtra("playerImage", 0)
@@ -39,11 +39,11 @@ class RoundResultActivity : AppCompatActivity() {
         val playerAction = intent.getStringExtra("playerAction") ?: ""
         val aiAction = intent.getStringExtra("aiAction") ?: ""
 
-        // Sätt bilder
+        // Set images on the result cards
         if (playerImageRes != 0) ivPlayer.setImageResource(playerImageRes)
         if (aiImageRes != 0) ivAi.setImageResource(aiImageRes)
 
-        // Sätt korttext
+        // Set text content
         tvPlayerName.text = "Your Card: $playerName"
         tvAiName.text = "AI Card: $aiName"
 
@@ -53,41 +53,36 @@ class RoundResultActivity : AppCompatActivity() {
         tvPlayerStrength.text = "Strength: $playerStrength"
         tvAiStrength.text = "Strength: $aiStrength"
 
-        // Resultmeddelande
+        // Round result message
         tvResult.text = resultMessage
 
-        // Score från ScoreManager – så här får du rätt siffror
+        // Total score from ScoreManager
         scoreText.text = "Score: Player ${ScoreManager.playerScore} vs AI ${ScoreManager.aiScore}"
 
-
         nextButton.setOnClickListener {
-            // Kolla om någon vann hela spelet
+            // Check if someone has won the entire game
             if (ScoreManager.playerScore >= ScoreManager.WIN_SCORE ||
                 ScoreManager.aiScore >= ScoreManager.WIN_SCORE
             ) {
-                // Har spelaren vunnit?
                 val playerWonGame = ScoreManager.playerScore >= ScoreManager.WIN_SCORE
 
-                val finalMessage = if (playerWonGame) {
-                    "YOU WON THE GAME! 🎉🏆🥳"
-                } else {
-                    "YOU LOST THE GAME… 😭💔"
-                }
-
                 val intent = Intent(this, GameOverActivity::class.java).apply {
-                    putExtra("playerWonGame", playerWonGame)
-                    putExtra("finalMessage", finalMessage)
+                    // 👇 MATCHAR GameOverActivity
+                    putExtra("PLAYER_WON", playerWonGame)
                 }
 
+                // Fadea ut battle-musiken innan vi går till Game Over
                 MusicManager.fadeOut {
                     startActivity(intent)
                     finish()
                 }
             } else {
-                // Ingen har nått WIN_SCORE än – fortsätt spelet
-                startActivity(Intent(this, GameActivity::class.java))
+                // Ingen har nått WIN_SCORE – fortsätt spelet
+                val backToGame = Intent(this, GameActivity::class.java)
+                startActivity(backToGame)
                 finish()
+                // Ingen fadeOut här, battle_music fortsätter.
             }
         }
     }
-    }
+}

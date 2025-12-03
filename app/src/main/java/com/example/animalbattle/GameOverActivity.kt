@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.animalbattle.util.MusicManager
 import com.example.animalbattle.util.ScoreManager
 
@@ -15,58 +14,43 @@ class GameOverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_over)
 
-        val root = findViewById<ConstraintLayout>(R.id.game_over_root)
+        // 🔊 Spela kort end-jingle när Game Over-skärmen visas
+        MusicManager.playEndJingle(this)
+
+        // Views
         val tvResult = findViewById<TextView>(R.id.tv_game_over_result)
-        val backButton = findViewById<Button>(R.id.button_back_to_menu)
         val playAgainButton = findViewById<Button>(R.id.button_play_again)
+        val backToMenuButton = findViewById<Button>(R.id.button_back_to_menu)
 
-        // Info från RoundResultActivity: har spelaren vunnit?
-        val playerWon = intent.getBooleanExtra("playerWonGame", false)
+        // Hämta om spelaren vann eller förlorade
+        val playerWon = intent.getBooleanExtra("PLAYER_WON", false)
 
-        // 🎉 / 😢 text – alltid kort variant
+        // Pokal vid vinst, ledsen gubbe vid förlust
         tvResult.text = if (playerWon) {
             "YOU WON! 🏆"
         } else {
-            "YOU LOST 😢"
+            "YOU LOST! 😢"
         }
 
-        // 🔁 Play Again vs Try Again
-        playAgainButton.text = if (playerWon) {
-            "🔁  Play Again"
-        } else {
-            "🔁  Try Again"
-        }
-
-        // Olika bakgrund för vinst/förlust
-        if (playerWon) {
-            root.setBackgroundResource(R.drawable.bg_game_over_win)
-        } else {
-            root.setBackgroundResource(R.drawable.bg_game_over_lose)
-        }
-
-        // 🏡 Tillbaka till menyn
-        backButton.setOnClickListener {
-            ScoreManager.reset()
-            finish()
-        }
-
-        // 🔁 Ny omgång
+        // 🔁 Spela igen: nollställ poäng och starta nytt game
         playAgainButton.setOnClickListener {
             ScoreManager.reset()
+
             val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
             finish()
-            overridePendingTransition(0, 0)
         }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        MusicManager.playGameOverJingle(this)
+        // 🏡 Till meny: nollställ poäng och stäng denna skärm
+        backToMenuButton.setOnClickListener {
+            ScoreManager.reset()
+            finish()
+        }
     }
 
     override fun onPause() {
         super.onPause()
+        // ⏹ Stoppa end-jingle om användaren lämnar denna skärm
         MusicManager.stop()
     }
 }
