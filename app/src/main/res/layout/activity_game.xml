@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
-    <!-- Allt innehåll samlat och vertikalt centrerat -->
+    <!-- Main vertical container centered on screen -->
     <LinearLayout
         android:id="@+id/content_container"
         android:layout_width="0dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Titel -->
+        <!-- Title (matches result screen title spacing) -->
         <TextView
             android:id="@+id/tv_game_title"
             android:layout_width="wrap_content"
@@ -28,163 +28,176 @@
             android:textSize="26sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="12dp" />
 
-        <!-- PLAYER CARD -->
+        <!-- Player card (same size, spacing, horizontal margins as result screen) -->
         <FrameLayout
             android:id="@+id/player_card_container"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/round_mask"
-        android:clipToOutline="true">
+            android:layout_marginHorizontal="24dp"
+            android:background="@drawable/round_mask"
+            android:clipToOutline="true">
 
-        <!-- Bakgrundsbild -->
-        <ImageView
-            android:id="@+id/player_card_background_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/player_bg_fantasy" />
-
-        <!-- Innehållet ovanpå bakgrunden -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:paddingBottom="4dp">
-
+            <!-- Player card background -->
             <ImageView
-                android:id="@+id/iv_player_image"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="8dp" />
+                android:id="@+id/player_card_background_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/player_bg_fantasy" />
 
+            <!-- Player card content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <!-- Player image -->
+                <ImageView
+                    android:id="@+id/iv_player_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:layout_marginTop="8dp" />
+
+                <!-- Player name -->
+                <TextView
+                    android:id="@+id/tv_player_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiger"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@android:color/white" />
+
+                <!-- Player strength -->
+                <TextView
+                    android:id="@+id/tv_player_strength"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Strength: 85"
+                    android:gravity="center"
+                    android:textColor="@android:color/white" />
+
+                <!-- Player personality -->
+                <TextView
+                    android:id="@+id/tv_player_personality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personality: Aggressive"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- VS section (same spacing as result screen) -->
+        <TextView
+            android:id="@+id/tv_vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VS"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- AI card (same height, margins and layout structure as result screen) -->
+        <FrameLayout
+            android:id="@+id/ai_card_container"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginHorizontal="24dp"
+            android:background="@drawable/round_mask"
+            android:clipToOutline="true">
+
+            <!-- AI background -->
+            <ImageView
+                android:id="@+id/ai_card_background_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/card_bg_fantasy" />
+
+            <!-- Placeholder text until AI card is revealed -->
             <TextView
-                android:id="@+id/tv_player_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tiger"
+                android:id="@+id/tv_ai_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="AI Card"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:textColor="@android:color/white" />
-
-            <TextView
-                android:id="@+id/tv_player_strength"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Strength: 85"
-                android:gravity="center"
-                android:textColor="@android:color/white" />
-
-            <TextView
-                android:id="@+id/tv_player_personality"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Personality: Aggressive"
-                android:gravity="center"
                 android:textColor="@android:color/white"
-                android:layout_marginTop="2dp" />
+                android:padding="16dp" />
+        </FrameLayout>
+
+        <!-- Invisible space holder (keeps same vertical spacing as round result text on result screen) -->
+        <TextView
+            android:id="@+id/tv_dummy_result_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="placeholder"
+            android:visibility="invisible"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Score (same margin-bottom as result screen score) -->
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: Player 0 vs AI 0"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Button row (matches horizontal margins & vertical position of result screen button) -->
+        <LinearLayout
+            android:id="@+id/button_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginHorizontal="24dp">
+
+            <!-- Attack button -->
+            <Button
+                android:id="@+id/button_attack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ATTACK"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:paddingVertical="16dp"
+                android:textSize="18sp" />
+
+            <!-- Spacing between buttons -->
+            <View
+                android:layout_width="16dp"
+                android:layout_height="0dp" />
+
+            <!-- Defend button -->
+            <Button
+                android:id="@+id/button_defend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DEFEND"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:paddingVertical="16dp"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
-    </FrameLayout>
-
-    <!-- VS -->
-    <TextView
-        android:id="@+id/tv_vs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VS"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp" />
-
-    <!-- AI CARD -->
-    <FrameLayout
-        android:id="@+id/ai_card_container"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round_mask"
-        android:clipToOutline="true">
-
-        <!-- Bakgrundsbild -->
-        <ImageView
-            android:id="@+id/ai_card_background_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/card_bg_fantasy" />
-
-        <!-- Text på bilden, centrerad -->
-        <TextView
-            android:id="@+id/tv_ai_placeholder"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="AI Card"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:padding="16dp" />
-    </FrameLayout>
-
-    <!-- Score -->
-    <TextView
-        android:id="@+id/tv_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Score: Player 0 vs AI 0"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal" />
-
-    <!-- Knappar bredvid varandra -->
-    <LinearLayout
-        android:id="@+id/button_row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="32dp"
-        android:layout_marginHorizontal="24dp">
-
-        <Button
-            android:id="@+id/button_attack"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="ATTACK"
-            android:backgroundTint="@android:color/holo_green_dark"
-            android:paddingVertical="16dp"
-            android:textSize="18sp" />
-
-        <View
-            android:layout_width="16dp"
-            android:layout_height="0dp" />
-
-        <Button
-            android:id="@+id/button_defend"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="DEFEND"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:paddingVertical="16dp"
-            android:textSize="18sp" />
-
     </LinearLayout>
 
-</LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
