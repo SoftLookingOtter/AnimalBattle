@@ -3,6 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Button primary color (change whenever you want) -->
-    <color name="ab_button_primary">#6A4DF5</color>
+
+    <!-- Primär knapp (meny, Next Round, Play Again) -->
+    <color name="ab_button_primary">#DDE3D1</color>
+    <color name="ab_button_primary_text">#2A3B36</color>
+
+    <!-- Attack-knapp (lite mer varm/grön) -->
+    <color name="ab_button_attack">#3E6A4F</color>
+
+    <!-- Defend-knapp (lite mörkare/kallare) -->
+    <color name="ab_button_defend">#233B3A</color>
 </resources>

@@ -4,20 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/game_over_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@drawable/background_paper">
 
-    <!-- Background image (swap win/lose in Kotlin) -->
-    <ImageView
-        android:id="@+id/iv_game_over_bg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_win"
-        android:contentDescription="@null" />
-
-    <!-- Semi-transparent panel -->
+    <!-- Center panel -->
     <LinearLayout
-        android:id="@+id/game_over_content"
+        android:id="@+id/game_over_result"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -31,46 +24,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Main win/lose title -->
         <TextView
             android:id="@+id/tv_game_over_result"
-            style="@style/Text.AnimalBattle.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="Win/Loose"
+            android:textStyle="bold"
+            android:textSize="36sp"
             android:gravity="center"
+            android:textColor="@android:color/white"
             android:layout_marginBottom="12dp"
-            android:maxLines="1"
             android:includeFontPadding="false" />
 
-        <!-- Sub text -->
+
         <TextView
             android:id="@+id/tv_game_over_sub"
-            style="@style/Text.AnimalBattle.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="🐾 Thanks for playing 🐾"
-            android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="24dp"/>
 
-        <!-- Play Again button -->
         <Button
             android:id="@+id/button_play_again"
             style="@style/Button.AnimalBattle.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="🔁  Play Again"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"/>
 
-        <!-- Back to menu -->
         <Button
             android:id="@+id/button_back_to_menu"
             style="@style/Button.AnimalBattle.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🏡  Back to Menu" />
+            android:text="🏡  Back to Menu"/>
 
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 

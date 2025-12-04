@@ -169,13 +169,11 @@
 
             <Button
                 android:id="@+id/button_attack"
+                style="@style/Button.AnimalBattle.Attack"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ATTACK"
-                android:backgroundTint="@android:color/holo_green_dark"
-                android:paddingVertical="16dp"
-                android:textSize="18sp" />
+                android:text="ATTACK" />
 
             <View
                 android:layout_width="16dp"
@@ -183,13 +181,12 @@
 
             <Button
                 android:id="@+id/button_defend"
+                style="@style/Button.AnimalBattle.Defend"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DEFEND"
-                android:backgroundTint="@android:color/holo_red_dark"
-                android:paddingVertical="16dp"
-                android:textSize="18sp" />
+                android:text="DEFEND" />
+
 
         </LinearLayout>
 

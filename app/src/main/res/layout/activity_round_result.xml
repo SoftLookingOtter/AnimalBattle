@@ -199,6 +199,7 @@
         <!-- Button to move on to the next round. -->
         <Button
             android:id="@+id/button_next_round"
+            style="@style/Button.AnimalBattle.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Next Round"
