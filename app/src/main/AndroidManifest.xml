@@ -12,21 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimalBattle">
 
-        <!-- This is the first screen the app shows when it launches. -->
+        <!-- Launch screen -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- The rest of the screens I navigate to during the game. -->
-        <activity android:name=".GameActivity" />
-        <activity android:name=".RoundResultActivity" />
-        <activity android:name=".GameOverActivity" />
+        <!-- Game screens (also locked to portrait) -->
+        <activity
+            android:name=".GameActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".RoundResultActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".GameOverActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
 </manifest>
+

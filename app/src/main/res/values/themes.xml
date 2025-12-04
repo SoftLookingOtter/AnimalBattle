@@ -41,7 +41,6 @@
 
     <!-- Shared base button for the game -->
     <style name="Button.AnimalBattle.Base" parent="Widget.Material3.Button">
-        <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:paddingLeft">24dp</item>
         <item name="android:paddingRight">24dp</item>
@@ -49,22 +48,28 @@
         <item name="android:paddingBottom">14dp</item>
     </style>
 
-    <!-- Menu buttons, Next Round, Play Again, Back to Menu -->
+    <!-- Primary buttons: menu, next round, play again, back to menu -->
     <style name="Button.AnimalBattle.Primary" parent="Button.AnimalBattle.Base">
-        <!-- Background color (set in colors.xml) -->
         <item name="backgroundTint">@color/ab_button_primary</item>
-        <!-- Dark green text color (#2A3B36) -->
         <item name="android:textColor">@color/ab_button_primary_text</item>
     </style>
 
     <!-- ATTACK -->
     <style name="Button.AnimalBattle.Attack" parent="Button.AnimalBattle.Base">
         <item name="backgroundTint">@color/ab_button_attack</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">2dp</item>
     </style>
 
     <!-- DEFEND -->
     <style name="Button.AnimalBattle.Defend" parent="Button.AnimalBattle.Base">
         <item name="backgroundTint">@color/ab_button_defend</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">2dp</item>
     </style>
 
 </resources>

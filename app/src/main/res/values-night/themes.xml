@@ -59,12 +59,30 @@
 
     <!-- ATTACK -->
     <style name="Button.AnimalBattle.Attack" parent="Button.AnimalBattle.Base">
+        <!-- Keep the green background -->
         <item name="backgroundTint">@color/ab_button_attack</item>
+
+        <!-- White text, bold -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+
+        <!-- Subtle white outline -->
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">2dp</item>
     </style>
 
     <!-- DEFEND -->
     <style name="Button.AnimalBattle.Defend" parent="Button.AnimalBattle.Base">
+        <!-- Keep the darker green/teal background -->
         <item name="backgroundTint">@color/ab_button_defend</item>
+
+        <!-- White text, bold -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+
+        <!-- Same outline for consistency -->
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">2dp</item>
     </style>
 
 </resources>
