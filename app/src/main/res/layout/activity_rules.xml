@@ -7,59 +7,50 @@
     android:padding="24dp"
     android:background="@drawable/background_paper">
 
-    <!-- I center everything here so the menu feels simple and clean. -->
+    <!-- Center panel -->
     <LinearLayout
-        android:id="@+id/content_container"
+        android:id="@+id/rules_panel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:background="@drawable/panel_dark"
+        android:padding="24dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Game title at the top. -->
+        <!-- Title -->
         <TextView
-            android:id="@+id/text_title"
+            android:id="@+id/tv_rules_title"
             style="@style/Text.AnimalBattle.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Animal Battle"
+            android:text="Rules"
             android:layout_marginBottom="20dp" />
 
-        <!-- The big animal group image in the center of the menu. -->
-        <ImageView
-            android:id="@+id/iv_animals_group"
-            android:layout_width="420dp"
-            android:layout_height="420dp"
-            android:layout_marginBottom="40dp"
-            android:src="@drawable/animals_group"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null" />
+        <!-- SHORT Rules text -->
+        <TextView
+            android:id="@+id/tv_rules_body"
+            style="@style/Text.AnimalBattle.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"
+            android:text="• Each animal card has a Strength value.\n\n• Choose ATTACK or DEFEND.\n\n• ATTACK = Strength.\n• DEFEND = Strength + 10.\n\n• Highest total wins the round.\n• Tie if both totals match.\n\n• First to win 3 rounds wins the match.\n\nAI TYPES:\n• Aggressive = attacks often.\n• Defensive = defends often.\n• Random = 50/50." />
 
-        <!-- Start Game -->
+        <!-- Back button -->
         <Button
-            android:id="@+id/button_start_game"
+            android:id="@+id/button_back_rules"
             style="@style/Button.AnimalBattle.Primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start Game"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Rules button -->
-        <Button
-            android:id="@+id/button_rules"
-            style="@style/Button.AnimalBattle.Primary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rules"
-            android:layout_marginTop="0dp" />
-
-
-
+            android:text="Back to Menu" />
 
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

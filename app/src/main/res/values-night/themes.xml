@@ -41,8 +41,16 @@
 
     <!-- Shared base button for the game -->
     <style name="Button.AnimalBattle.Base" parent="Widget.Material3.Button">
+        <!-- Same text style for all buttons -->
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
+
+        <!-- Make all buttons use the same width -->
+        <item name="android:minWidth">240dp</item>
+        <item name="android:maxWidth">240dp</item>
+        <item name="android:gravity">center</item>
+
+        <!-- Padding -->
         <item name="android:paddingLeft">24dp</item>
         <item name="android:paddingRight">24dp</item>
         <item name="android:paddingTop">14dp</item>
@@ -51,7 +59,7 @@
 
     <!-- Menu buttons, Next Round, Play Again, Back to Menu -->
     <style name="Button.AnimalBattle.Primary" parent="Button.AnimalBattle.Base">
-        <!-- Background color (set in colors.xml) -->
+        <!-- Background color (defined in colors.xml) -->
         <item name="backgroundTint">@color/ab_button_primary</item>
         <!-- Dark green text color (#2A3B36) -->
         <item name="android:textColor">@color/ab_button_primary_text</item>
@@ -59,30 +67,21 @@
 
     <!-- ATTACK -->
     <style name="Button.AnimalBattle.Attack" parent="Button.AnimalBattle.Base">
-        <!-- Keep the green background -->
+        <!-- Green background -->
         <item name="backgroundTint">@color/ab_button_attack</item>
-
-        <!-- White text, bold -->
+        <!-- White, bold text -->
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
-
-        <!-- Subtle white outline -->
-        <item name="strokeColor">@android:color/white</item>
-        <item name="strokeWidth">2dp</item>
     </style>
 
     <!-- DEFEND -->
     <style name="Button.AnimalBattle.Defend" parent="Button.AnimalBattle.Base">
-        <!-- Keep the darker green/teal background -->
+        <!-- Darker teal background -->
         <item name="backgroundTint">@color/ab_button_defend</item>
-
-        <!-- White text, bold -->
+        <!-- White, bold text -->
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
-
-        <!-- Same outline for consistency -->
-        <item name="strokeColor">@android:color/white</item>
-        <item name="strokeWidth">2dp</item>
     </style>
 
 </resources>
+

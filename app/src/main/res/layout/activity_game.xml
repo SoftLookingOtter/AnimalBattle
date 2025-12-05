@@ -170,7 +170,7 @@
             <Button
                 android:id="@+id/button_attack"
                 style="@style/Button.AnimalBattle.Attack"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ATTACK" />
@@ -182,7 +182,8 @@
             <Button
                 android:id="@+id/button_defend"
                 style="@style/Button.AnimalBattle.Defend"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="DEFEND" />
