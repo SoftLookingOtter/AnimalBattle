@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Main menu screen: title, hero image and two primary buttons -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,59 +8,57 @@
     android:padding="24dp"
     android:background="@drawable/background_paper">
 
-    <!-- I center everything here so the menu feels simple and clean. -->
+    <!-- Centered vertical column so the menu layout matches other screens -->
     <LinearLayout
         android:id="@+id/content_container"
         android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <!-- Game title -->
+    <TextView
+        android:id="@+id/text_title"
+        style="@style/Text.AnimalBattle.Title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:text="Animal Battle"
+        android:layout_marginBottom="20dp" />
 
-        <!-- Game title at the top. -->
-        <TextView
-            android:id="@+id/text_title"
-            style="@style/Text.AnimalBattle.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Animal Battle"
-            android:layout_marginBottom="20dp" />
+    <!-- Center hero image with all animals -->
+    <ImageView
+        android:id="@+id/iv_animals_group"
+        android:layout_width="420dp"
+        android:layout_height="420dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/animals_group"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null" />
 
-        <!-- The big animal group image in the center of the menu. -->
-        <ImageView
-            android:id="@+id/iv_animals_group"
-            android:layout_width="420dp"
-            android:layout_height="420dp"
-            android:layout_marginBottom="40dp"
-            android:src="@drawable/animals_group"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null" />
+    <!-- Button: start the game -->
+    <Button
+        android:id="@+id/button_start_game"
+        style="@style/Button.AnimalBattle.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:layout_marginBottom="16dp" />
 
-        <!-- Start Game -->
-        <Button
-            android:id="@+id/button_start_game"
-            style="@style/Button.AnimalBattle.Primary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start Game"
-            android:layout_marginBottom="16dp" />
+    <!-- Button: open the rules screen -->
+    <Button
+        android:id="@+id/button_rules"
+        style="@style/Button.AnimalBattle.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rules"
+        android:layout_marginTop="0dp" />
 
-        <!-- Rules button -->
-        <Button
-            android:id="@+id/button_rules"
-            style="@style/Button.AnimalBattle.Primary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rules"
-            android:layout_marginTop="0dp" />
+</LinearLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

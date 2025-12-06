@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This is my transparent rounded mask.
-     I use it to clip card backgrounds so everything keeps the same shape. -->
+<!-- Rounded transparent shape used as a clipping mask for card backgrounds.
+     It keeps all cards visually consistent while allowing images to show through. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
+    <!-- Rounded corners for card visuals -->
     <corners android:radius="20dp" />
 
-    <!-- Transparent so the actual image behind it shows through. -->
+    <!-- Fully transparent fill so the card's image/background is visible -->
     <solid android:color="@android:color/transparent" />
 
 </shape>
-
 

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Background shape used for panels/cards with rounded corners,
+     semi-transparent dark fill, inner padding, and a soft border. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Dark semi-transparent background -->
+    <!-- Semi-transparent dark background (#AA = ~66% opacity) -->
     <solid android:color="#AA1A1A1A" />
-    <!-- AA = ~66% opacity -->
 
-    <!-- Rounded corners -->
+    <!-- Rounded corners for a softer, modern UI look -->
     <corners android:radius="24dp" />
 
-    <!-- Inner padding -->
+    <!-- Inner spacing so that the content never touches the panel edges -->
     <padding
         android:left="16dp"
         android:top="16dp"
         android:right="16dp"
         android:bottom="16dp" />
 
-    <!-- Subtle soft border -->
+    <!-- Subtle white border (#33 = ~20% opacity) -->
     <stroke
         android:width="1dp"
         android:color="#33FFFFFF" />
+
 </shape>

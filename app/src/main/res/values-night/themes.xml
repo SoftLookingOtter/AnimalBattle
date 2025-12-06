@@ -1,87 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base theme for the app -->
+    <!-- Base theme which inherits from Material 3 and applies global defaults -->
     <style name="Base.Theme.AnimalBattle" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- All default TextViews get white text -->
+        <!-- Makes all TextViews in the app use our custom global TextView style -->
         <item name="android:textViewStyle">@style/Widget.AnimalBattle.TextView</item>
     </style>
 
-    <!-- App main theme -->
+    <!-- Main app theme used in AndroidManifest -->
+    <!-- Keeps it clean so overrides can be added later without touching the base -->
     <style name="Theme.AnimalBattle" parent="Base.Theme.AnimalBattle" />
 
-    <!-- ====== GLOBAL TEXTVIEW ====== -->
+    <!-- ===== GLOBAL TEXTVIEW DEFAULTS ===== -->
     <style name="Widget.AnimalBattle.TextView" parent="@android:style/Widget.TextView">
+        <!-- All TextViews use white text unless overridden -->
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <!-- ====== TEXT STYLES ====== -->
+    <!-- ===== TEXT STYLES FOR SPECIFIC USE CASES ===== -->
 
-    <!-- Big titles: Battle Arena, Round Result, Game Over -->
+    <!-- Large title texts used on major screens -->
     <style name="Text.AnimalBattle.Title" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- Card titles: "Your Card: Tiger", "AI Card: Goat", "AI Card" placeholder -->
+    <!-- Medium-sized titles for cards -->
     <style name="Text.AnimalBattle.CardTitle" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- Body text: strength, actions, score, subtitles -->
+    <!-- Body text used across game info, stats, actions, score, etc. -->
     <style name="Text.AnimalBattle.Body" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <!-- ====== BUTTON STYLES ====== -->
+    <!-- ===== BUTTON STYLES ===== -->
 
-    <!-- Shared base button for the game -->
+    <!-- Base button style used by *all* buttons in the game -->
     <style name="Button.AnimalBattle.Base" parent="Widget.Material3.Button">
-        <!-- Same text style for all buttons -->
+        <!-- Shared text appearance -->
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
 
-        <!-- Make all buttons use the same width -->
+        <!-- Consistent width across all buttons -->
         <item name="android:minWidth">240dp</item>
         <item name="android:maxWidth">240dp</item>
         <item name="android:gravity">center</item>
 
-        <!-- Padding -->
+        <!-- Standard padding -->
         <item name="android:paddingLeft">24dp</item>
         <item name="android:paddingRight">24dp</item>
         <item name="android:paddingTop">14dp</item>
         <item name="android:paddingBottom">14dp</item>
     </style>
 
-    <!-- Menu buttons, Next Round, Play Again, Back to Menu -->
+    <!-- Main menu buttons (Next Round, Play Again, Back to Menu) -->
     <style name="Button.AnimalBattle.Primary" parent="Button.AnimalBattle.Base">
-        <!-- Background color (defined in colors.xml) -->
+        <!-- Uses app-defined primary button color -->
         <item name="backgroundTint">@color/ab_button_primary</item>
-        <!-- Dark green text color (#2A3B36) -->
+        <!-- Dark green text to match the UI theme -->
         <item name="android:textColor">@color/ab_button_primary_text</item>
     </style>
 
-    <!-- ATTACK -->
+    <!-- Attack button styling -->
     <style name="Button.AnimalBattle.Attack" parent="Button.AnimalBattle.Base">
-        <!-- Green background -->
         <item name="backgroundTint">@color/ab_button_attack</item>
-        <!-- White, bold text -->
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- DEFEND -->
+    <!-- Defend button styling -->
     <style name="Button.AnimalBattle.Defend" parent="Button.AnimalBattle.Base">
-        <!-- Darker teal background -->
         <item name="backgroundTint">@color/ab_button_defend</item>
-        <!-- White, bold text -->
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
-

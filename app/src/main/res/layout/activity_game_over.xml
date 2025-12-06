@@ -24,28 +24,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Game over title (You won / You lost) -->
         <TextView
             android:id="@+id/tv_game_over_result"
-            android:layout_width="match_parent"
+            style="@style/Text.AnimalBattle.Title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Win/Loose"
-            android:textStyle="bold"
-            android:textSize="36sp"
+            android:text="Win/Lose"
             android:gravity="center"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="12dp"
-            android:includeFontPadding="false" />
+            android:layout_marginBottom="12dp"/>
 
-
+        <!-- Sub text -->
         <TextView
             android:id="@+id/tv_game_over_sub"
+            style="@style/Text.AnimalBattle.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="🐾 Thanks for playing 🐾"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
+            android:gravity="center"
             android:layout_marginBottom="24dp"/>
 
+        <!-- Play again -->
         <Button
             android:id="@+id/button_play_again"
             style="@style/Button.AnimalBattle.Primary"
@@ -54,14 +53,15 @@
             android:text="🔁  Play Again"
             android:layout_marginBottom="12dp"/>
 
+        <!-- Back to menu -->
         <Button
             android:id="@+id/button_back_to_menu"
             style="@style/Button.AnimalBattle.Primary"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:text="🏡  Back to Menu"/>
 
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

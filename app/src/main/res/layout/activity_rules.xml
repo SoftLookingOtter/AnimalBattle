@@ -32,7 +32,7 @@
             android:text="Rules"
             android:layout_marginBottom="20dp" />
 
-        <!-- SHORT Rules text -->
+        <!-- Short Rules text -->
         <TextView
             android:id="@+id/tv_rules_body"
             style="@style/Text.AnimalBattle.Body"
